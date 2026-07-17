@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "description": "A full stack web app that allows for a user to record and share wins",
   "scripts": {
-    "build-backend": "cd backend && npm run build",
-    "start-backend": "cd backend && npm run start",
-    "build-client": "cd client && npm run build",
-    "start-client": "cd client && npm run start",
-    "dev-backend": "cd backend && npm run dev",
-    "dev-client": "cd client && npm run dev",
     "dev": "concurrently \"npm run dev-backend\" \"npm run dev-client\"",
+
+    "build-backend": "cd backend && npm run build",
     "test-backend": "cd backend && npm run test",
-    "test-client": "cd client && npm run test"
+    "dev-backend": "cd backend && npm run dev",
+    "prod-backend": "cd backend && npm run prod",
+
+    "build-client": "cd client && npm run build",
+    "test-client": "cd client && npm run test",
+    "dev-client": "cd client && npm run dev",
+    "prod-client": "cd client && npm run start"
   },
   "repository": {
     "type": "git",

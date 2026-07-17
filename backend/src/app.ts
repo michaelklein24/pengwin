@@ -1,11 +1,8 @@
-import express, { type Express, type Request, type Response } from 'express';
+import express, { type Express } from 'express';
+import { configService } from './services/ConfigService.ts';
 
 const app: Express = express();
-const PORT = 5000;
-
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello World!');
-});
+const PORT = configService.getNumber("PORT");
 
 app.listen(PORT, () => {
     console.log(`Backend is running on http://localhost:${PORT}`);
