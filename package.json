@@ -1,0 +1,29 @@
+{
+  "name": "pengwin",
+  "version": "1.0.0",
+  "description": "A full stack web app that allows for a user to record and share wins",
+  "scripts": {
+    "build-backend": "cd backend && npm run build",
+    "start-backend": "cd backend && npm run start",
+    "build-client": "cd client && npm run build",
+    "start-client": "cd client && npm run start",
+    "dev-backend": "cd backend && npm run dev",
+    "dev-client": "cd client && npm run dev",
+    "dev": "concurrently \"npm run dev-backend\" \"npm run dev-client\"",
+    "test-backend": "cd backend && npm run test",
+    "test-client": "cd client && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelklein24/pengwin.git"
+  },
+  "author": "michaelklein24",
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "bugs": {
+    "url": "https://github.com/michaelklein24/pengwin/issues"
+  },
+  "homepage": "https://github.com/michaelklein24/pengwin#readme",
+  "dependencies": {
+    "concurrently": "^9.2.4"
+  }
+}
