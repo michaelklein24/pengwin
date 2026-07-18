@@ -1,0 +1,79 @@
+query GetWins {
+  getWins {
+    id
+    title
+    description
+    impact
+    tags
+    challenges
+    skills
+    startDate
+    completionDate
+    collaborators
+    evidence
+    userId
+  }
+}
+
+query GetWin($id: ID!) {
+  getWin(id: $id) {
+    id
+    title
+    description
+    impact
+    tags
+    challenges
+    skills
+    startDate
+    completionDate
+    collaborators
+    evidence
+    userId
+    user {
+      id
+      name
+      email
+    }
+  }
+}
+
+mutation CreateWin(
+  $userId: ID!
+  $title: String!
+  $description: String
+  $impact: ImpactLevel!
+  $tags: [String!]!
+  $challenges: [String!]!
+  $skills: [String!]!
+  $startDate: String!
+  $completionDate: String!
+  $collaborators: [String!]!
+  $evidence: String
+) {
+  createWin(
+    userId: $userId
+    title: $title
+    description: $description
+    impact: $impact
+    tags: $tags
+    challenges: $challenges
+    skills: $skills
+    startDate: $startDate
+    completionDate: $completionDate
+    collaborators: $collaborators
+    evidence: $evidence
+  ) {
+    id
+    title
+    description
+    impact
+    tags
+    challenges
+    skills
+    startDate
+    completionDate
+    collaborators
+    evidence
+    userId
+  }
+}

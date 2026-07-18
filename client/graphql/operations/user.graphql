@@ -1,0 +1,21 @@
+query GetUser($id: ID!) {
+  getUser(id: $id) {
+    id
+    name
+    email
+    wins {
+      id
+      title
+      description
+      impact
+      tags
+      challenges
+      skills
+      startDate
+      completionDate
+      collaborators
+      evidence
+      userId
+    }
+  }
+}
