@@ -53,12 +53,6 @@ lerna-debug.log*
 *.sln
 *.sw?
 
-# Cursor, Windsurf & AI Editor caches
-.cursorrules
-.cursor/
-.codeium/
-.windsurf/
-
 # ==========================================
 # System & OS Clutter
 # ==========================================

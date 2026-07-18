@@ -1,0 +1,20 @@
+---
+description: Do not commit changes unless the user explicitly authorizes it
+alwaysApply: true
+---
+
+# Git Commits Require Explicit Permission
+
+You are **forbidden** from committing any changes to a branch unless the user explicitly tells you that you may commit.
+
+## Allowed
+
+- Stage files, run `git status`, `git diff`, and `git log` to prepare for a commit
+- Draft a commit message when asked to commit
+- Commit only when the user clearly requests it (e.g. "commit these changes", "create a commit")
+
+## Forbidden
+
+- Creating commits on your own initiative
+- Committing as a "helpful" follow-up after completing a task
+- Assuming permission from vague phrasing like "looks good" or "ship it" unless they clearly mean commit
