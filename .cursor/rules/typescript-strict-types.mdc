@@ -1,0 +1,65 @@
+---
+description: Explicit TypeScript types; forbid any and unknown without permission
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# TypeScript Strict Typing
+
+Apply these rules to all TypeScript code in this project.
+
+## Function Return Types
+
+Every function, method, and arrow function must declare an explicit return type.
+
+```typescript
+// ❌ BAD
+function getUser(id: string) {
+  return db.findUser(id);
+}
+
+const parse = (raw: string) => JSON.parse(raw);
+
+// ✅ GOOD
+function getUser(id: string): User | null {
+  return db.findUser(id);
+}
+
+const parse = (raw: string): ParsedPayload => JSON.parse(raw) as ParsedPayload;
+```
+
+## Variable Types
+
+Every declared variable must have an explicit type annotation. Do not rely on inference for `const`, `let`, or destructuring bindings.
+
+```typescript
+// ❌ BAD
+const users = await fetchUsers();
+let count = 0;
+const { name, age } = user;
+
+// ✅ GOOD
+const users: User[] = await fetchUsers();
+let count: number = 0;
+const { name, age }: { name: string; age: number } = user;
+```
+
+## Forbidden Types
+
+You are **forbidden** from using `any` or `unknown` as a type annotation, generic argument, cast target, or assertion result.
+
+```typescript
+// ❌ BAD
+function handle(data: any): unknown { ... }
+const value = response as any;
+
+// ✅ GOOD — use a concrete type or a well-defined union/interface
+function handle(data: ApiPayload): ApiResult { ... }
+const value: ApiPayload = response as ApiPayload;
+```
+
+If `any` or `unknown` seems necessary, **stop and ask the user for permission** before using it. Explain why a concrete type cannot be used.
+
+## When Types Are Unclear
+
+Prefer narrowing, type guards, generics with constraints, or defining a small interface over falling back to loose types.

@@ -1,0 +1,40 @@
+---
+description: Patterns for creating or modifying backend service class tests
+globs: backend/src/services/**/*.test.ts
+alwaysApply: false
+---
+
+# Service Test Patterns
+
+Every class in `backend/src/services/` must have a colocated `<ServiceName>.test.ts`. Follow `JwtService.test.ts` and `ConfigService.test.ts` as the reference implementations.
+
+## Structure
+
+```typescript
+describe("<ServiceName>", () => {
+    // shared lets, constants, beforeEach (mocks + service instance), afterEach (jest.restoreAllMocks)
+
+    describe("<ServiceName> Unit Tests", () => {
+        // beforeEach: spy/mock external modules and collaborators
+        // one test per observable behavior; mock dependencies
+    });
+
+    describe("<ServiceName> Integration Tests", () => {
+        // no spies on the code under test; use real implementations
+        // mock only injected dependencies (e.g. IConfigService)
+    });
+});
+```
+
+## Conventions
+
+- **Imports**: use `@jest/globals` (`describe`, `test`, `expect`, `jest`, `beforeEach`, `afterEach`). Import the service with the `.ts` extension.
+- **Naming**: test titles use `'<ServiceName>.<methodName> should <expected behavior>'`.
+- **Layout**: use `// Arrange`, `// Act`, `// Assert` (or `// Act & Assert` for throws). Explicit types on all variables and spies.
+- **Mocks**: type mocks with `jest.fn<FnType>()` and `jest.SpiedFunction<typeof fn>`. Mock collaborators via their interface (e.g. `IConfigService`), not concrete classes.
+- **Unit vs integration**: unit tests verify interactions (method calls, arguments, return values) with external deps mocked/spied; integration tests exercise real behavior end-to-end, including error paths.
+- **Cleanup**: always call `jest.restoreAllMocks()` in root `afterEach`.
+
+## Coverage Expectations
+
+Test each public method: happy path, relevant error/edge cases, and key interactions with dependencies. Skip trivial getters or pass-through code with no logic.
