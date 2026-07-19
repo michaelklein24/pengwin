@@ -2,26 +2,38 @@
   "name": "pengwin-backend",
   "version": "1.0.0",
   "type": "module",
-  "main": "src/app.ts",
+  "main": "src/Server.ts",
   "scripts": {
     "build": "tsc",
     "dev": "cross-env NODE_ENV=development nodemon",
-    "start": "cross-env NODE_ENV=production node dist/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env NODE_ENV=production node dist/Server.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "michaelklein24",
   "license": "SEE LICENSE IN LICENSE.txt",
   "description": "The backend for pengwin",
   "dependencies": {
+    "@nestjs/common": "^11.1.28",
+    "@nestjs/core": "^11.1.28",
+    "@nestjs/platform-express": "^11.1.28",
     "cross-env": "^10.1.0",
     "dotenv": "^17.4.2",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "jest": "^30.4.2",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.5.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
   },
   "devDependencies": {
+    "@swc/jest": "^0.2.39",
     "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^26.1.1",
-    "typescript": "^7.0.2",
-    "nodemon": "^3.1.14"
+    "@types/pg": "^8.20.0",
+    "nodemon": "^3.1.14",
+    "pg": "^8.22.0",
+    "typescript": "^7.0.2"
   }
 }

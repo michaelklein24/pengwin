@@ -1,0 +1,2 @@
+- Use @ConfigService.ts to pull configuration values stored in .env files.  Never directly use `process.env`.
+- You can make any change without my approval that is only related to linting as long as there are no new methods, variables, changes in logic, etc.
